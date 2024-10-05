@@ -71,7 +71,8 @@
                         </h2>
                         <div class=" flex items-center gap-2">
                             <p class="text-gray-400">${video.authors[0].profile_name}  </p>
-                            <img class=" w-4 h-4" src="https://img.icons8.com/?size=96&id=D9RtvkuOe31p&format=png"/>
+                                ${video.authors[0].verified === true ? '<img class=" w-4 h-4" src="https://img.icons8.com/?size=96&id=D9RtvkuOe31p&format=png"/>' : ""}
+                            
                         </div>
                    </div>               
                 </div>
