@@ -17,6 +17,16 @@
 //     "description": "John Mulaney's 'Kid Gorgeous' has captured the hearts of many with 241K views. As a verified comedian, John delivers a masterclass in stand-up with clever anecdotes, quick wit, and relatable humor. This performance is a laugh-filled adventure through his unique take on life, politics, and pop culture."
 // }
 
+//time conversion:
+function getTimeString(time){
+
+    //get hour and rest seconds:
+    const hour = parseInt(time / 3600);
+    let remainingSeconds = parseInt(time % 3600)
+    const minute = parseInt(remainingSeconds / 60)
+    const second = parseInt(remainingSeconds % 60)
+    return `${hour} hour ${minute} minute ${second} second ago`
+}
 
 //1. fetch, load and show categories on html
 
@@ -51,15 +61,15 @@
         videos.forEach(video => {
             //creating a card
 
-            console.log(video);
             const card = document.createElement('div');
             card.classList = "card card-compact"
             card.innerHTML = `
-                <figure class="h-[200px]">
+                <figure class="h-[200px] relative">
                     <img
                     src=${video.thumbnail}
                     class="w-full h-full object-cover"
                     alt="Shoes" />
+                        ${video.others.posted_date?.length == 0 ? "" : `<span class="absolute right-1 bottom-1 bg-black p-1 text-sm  text-white rounded">${getTimeString(video.others.posted_date)}</span>`}
                 </figure>
                 <div class="px-0 py-2 flex gap-2">
                    <div>
@@ -79,12 +89,6 @@
                 `;
 
                 videoContainer.append(card)
-
-
-
-
-
-                
         })
     }
 
